@@ -32,7 +32,7 @@ public class LSystemGenerator : MonoBehaviour
         StartCoroutine(GenerateLSystem());
     }
 
-    //repeats the generation
+    //repeats the generation//
     IEnumerator GenerateLSystem()
     {
         int count = 0;
@@ -51,6 +51,7 @@ public class LSystemGenerator : MonoBehaviour
         }
     }
 
+    //Generates the plant//
     IEnumerator Generate()
     {
         //params initialization
@@ -78,33 +79,33 @@ public class LSystemGenerator : MonoBehaviour
         stringCharacters = currentString.ToCharArray();
 
 
-        //apply the rules of going forward (F), turn right (+) or left (-) & save ( [ ) or restore ( ] ) (position,rotation) for every string
+        //apply the rules of going forward (F), turn right (-) or left (+) & save ( [ ) or restore ( ] ) (position,rotation) for every string//
         for (int i = 0; i < stringCharacters.Length; i++)
         {
             char currentCharacter = stringCharacters[i];
 
-            if (currentCharacter == 'F')
+            if (currentCharacter == 'F') //forward
             {
                 Vector3 initialPos = transform.position;
                 transform.Translate(Vector3.forward * length);
                 Debug.DrawLine(initialPos, transform.position, Color.green, 10000f, false);
                 yield return null;
-            } else if(currentCharacter == '+')
+            } else if(currentCharacter == '+') //turn left
             {
                 transform.Rotate(Vector3.up * angle);
             }
-            else if (currentCharacter == '-')
+            else if (currentCharacter == '-') //turn right
             {
                 transform.Rotate(Vector3.up * -angle);
             }
-            else if(currentCharacter == '[')
+            else if(currentCharacter == '[') //saves the position and rotation (angle)
             {
                 TransformInfo ti = new TransformInfo();
                 ti.position = transform.position;
                 ti.rotation = transform.rotation;
                 transformStack.Push(ti);
             }
-            else if(currentCharacter == ']')
+            else if(currentCharacter == ']') //restores the position and rotation (angle)
             {
                 TransformInfo ti = transformStack.Pop();
                 transform.position = ti.position;
