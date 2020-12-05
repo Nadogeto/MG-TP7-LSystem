@@ -43,6 +43,7 @@ public class LSystemGenerator : MonoBehaviour
             {
                 isGenerating = true;
                 StartCoroutine(Generate());
+                count++;
             }
             else
             {
