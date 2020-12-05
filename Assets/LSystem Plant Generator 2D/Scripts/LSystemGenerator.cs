@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class LSystemGenerator : MonoBehaviour
 {
+    //params of L-System
     private string axiom = "F";
     private float angle;
+
     private float length;
     private string currentString;
 
-    //Set of rules
+    //contains the set of rules
     private Dictionary<char, string> rules = new Dictionary<char, string>();
 
-    //Stack of transforms in order to save and load (positions,rotations)
+    //contains a stack of transforms in order to save and restore (positions,rotations)
     private Stack<TransformInfo> transformStack = new Stack<TransformInfo>();
 
     private bool isGenerating = false;
@@ -20,20 +22,17 @@ public class LSystemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //the rule and the constants : + - []
         rules.Add('F', "FF+[+F-F-F]-[-F+F+F]");
-        currentString = axiom;
+        currentString = axiom; //start at the axiom 'F'
         angle = 25f;
         length = 10;
 
+        //calls for the generation
         StartCoroutine(GenerateLSystem());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //repeats the generation
     IEnumerator GenerateLSystem()
     {
         int count = 0;
@@ -54,6 +53,7 @@ public class LSystemGenerator : MonoBehaviour
 
     IEnumerator Generate()
     {
+        //params initialization
         length = length / 2;
         string newString = "";
 
@@ -78,8 +78,8 @@ public class LSystemGenerator : MonoBehaviour
         stringCharacters = currentString.ToCharArray();
 
 
-        //apply the rules of going forward, turn right or left & save or load (position,rotation)
-        for(int i = 0; i < stringCharacters.Length; i++)
+        //apply the rules of going forward (F), turn right (+) or left (-) & save ( [ ) or restore ( ] ) (position,rotation) for every string
+        for (int i = 0; i < stringCharacters.Length; i++)
         {
             char currentCharacter = stringCharacters[i];
 
