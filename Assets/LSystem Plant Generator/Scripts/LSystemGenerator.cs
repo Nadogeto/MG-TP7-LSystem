@@ -6,6 +6,7 @@ public class LSystemGenerator : MonoBehaviour
 {
     private string axiom = "F";
     private float angle;
+    private float length;
     private string currentString;
 
     //Set of rules
@@ -14,8 +15,6 @@ public class LSystemGenerator : MonoBehaviour
     //Stack of transforms in order to save and load (positions,rotations)
     private Stack<TransformInfo> transformStack = new Stack<TransformInfo>();
 
-
-    private float length;
     private bool isGenerating = false;
 
     // Start is called before the first frame update
@@ -89,6 +88,7 @@ public class LSystemGenerator : MonoBehaviour
                 Vector3 initialPos = transform.position;
                 transform.Translate(Vector3.forward * length);
                 Debug.DrawLine(initialPos, transform.position, Color.green, 10000f, false);
+                yield return null;
             } else if(currentCharacter == '+')
             {
                 transform.Rotate(Vector3.up * angle);
@@ -111,5 +111,7 @@ public class LSystemGenerator : MonoBehaviour
                 transform.rotation = ti.rotation;
             }
         }
+
+        isGenerating = false;
     }
 }
