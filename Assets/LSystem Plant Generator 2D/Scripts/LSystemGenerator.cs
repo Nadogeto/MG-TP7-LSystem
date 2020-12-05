@@ -22,7 +22,7 @@ public class LSystemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //the rule and the constants : + - []
+        //the rule and the constants : + - [ ]
         rules.Add('F', "FF+[+F-F-F]-[-F+F+F]");
         currentString = axiom; //start at the axiom 'F'
         angle = 25f;
