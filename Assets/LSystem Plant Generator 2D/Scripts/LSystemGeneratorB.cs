@@ -24,19 +24,9 @@ public class LSystemGeneratorB : MonoBehaviour
     {
         //the rule and the constants : + - [ ]//
 
-        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); //first rule - test
-
-        //case 'A'
-        //rules.add('F', "F[+F]F[-F]F");
-        //angle = 25.7f;
-
         //case 'B'
         rules.Add('F', "F[+F]F[-F][F]"); 
         angle = 20f;
-
-        //case 'C'
-        //rules.Add('F', "FF-[-F+F+F]+[+F-F-F]"); 
-        //angle = 22.5f;
 
         currentString = axiom; //start at the axiom 'F'
         length = 10;
