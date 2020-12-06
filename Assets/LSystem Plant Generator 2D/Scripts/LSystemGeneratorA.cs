@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LSystemGenerator : MonoBehaviour
+public class LSystemGeneratorA : MonoBehaviour
 {
     //params of L-System
     private string axiom = "F";
@@ -22,10 +22,30 @@ public class LSystemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //the rule and the constants : + - [ ]
-        rules.Add('F', "FF+[+F-F-F]-[-F+F+F]");
+        //the rule and the constants : + - [ ]//
+
+        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); //first rule - test
+
+        //case 'A'
+        rules.Add('F', "F[+F]F[-F]F"); 
+        angle = 25.7f;
+
+        //case 'B'
+        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
+
+        //case 'C'
+        //rules.Add('F', "FF-[-F+F+F]+[+F-F-F]"); 
+
+        //case 'D'
+        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
+
+        //case 'E'
+        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
+
+        //case 'F'
+        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
+
         currentString = axiom; //start at the axiom 'F'
-        angle = 25f;
         length = 10;
 
         //calls for the generation
