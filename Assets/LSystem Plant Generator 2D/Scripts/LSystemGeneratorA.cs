@@ -30,21 +30,6 @@ public class LSystemGeneratorA : MonoBehaviour
         rules.Add('F', "F[+F]F[-F]F"); 
         angle = 25.7f;
 
-        //case 'B'
-        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
-
-        //case 'C'
-        //rules.Add('F', "FF-[-F+F+F]+[+F-F-F]"); 
-
-        //case 'D'
-        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
-
-        //case 'E'
-        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
-
-        //case 'F'
-        //rules.Add('F', "FF+[+F-F-F]-[-F+F+F]"); 
-
         currentString = axiom; //start at the axiom 'F'
         length = 10;
 
@@ -72,15 +57,16 @@ public class LSystemGeneratorA : MonoBehaviour
         }
     }
 
-    //Generates the plant//
+    //generates the plant//
     IEnumerator Generate()
     {
         //params initialization
         length = length / 2;
         string newString = "";
 
+        //applies the rules to each string (ex: F --> FF)
         char[] stringCharacters = currentString.ToCharArray();
-
+      
         for(int i = 0; i < stringCharacters.Length; i++)
         {
             char currentCharacter = stringCharacters[i];
