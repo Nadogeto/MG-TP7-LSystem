@@ -62,7 +62,7 @@ public class LSystemGeneratorB : MonoBehaviour
         length = length / 2;
         string newString = "";
 
-        //applies the rules to each string (ex: F --> FF)
+        //applies the rules to each character (ex: F --> FF)
         char[] stringCharacters = currentString.ToCharArray();
 
         for (int i = 0; i < stringCharacters.Length; i++)
@@ -80,12 +80,13 @@ public class LSystemGeneratorB : MonoBehaviour
         }
 
         currentString = newString;
+        Debug.Log("CASE B");
         Debug.Log(currentString);
 
         stringCharacters = currentString.ToCharArray();
 
 
-        //apply the rules of going forward (F), turn right (-) or left (+) & save ( [ ) or restore ( ] ) (position,rotation) for every string//
+        //apply the rules of going forward (F), turn right (-) or left (+) & save ( [ ) or restore ( ] ) (position,rotation) for every char//
         for (int i = 0; i < stringCharacters.Length; i++)
         {
             char currentCharacter = stringCharacters[i];
