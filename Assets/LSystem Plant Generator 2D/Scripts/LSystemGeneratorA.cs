@@ -87,7 +87,8 @@ public class LSystemGeneratorA : MonoBehaviour
         stringCharacters = currentString.ToCharArray();
 
 
-        //apply the rules of going forward (F), turn right (-) or left (+) & save ( [ ) or restore ( ] ) (position,rotation) for every car//
+        //apply the rules of going forward (F), turn right (-) or left (+) & save ( [ )// 
+        //or restore ( ] ) (position,rotation) for every car//
         for (int i = 0; i < stringCharacters.Length; i++)
         {
             char currentCharacter = stringCharacters[i];
